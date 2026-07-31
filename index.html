@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Jamil Mart</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+      /* --- Custom Modern Theme Variables (Red Gradient Theme) --- */
+      :root {
+        --accent-cyan: #ff4d4d;
+        --accent-cyan-gradient: linear-gradient(135deg, #ff4d4d 0%, #dc3545 100%);
+      }
+
+      /* Light Mode Palette */
+      [data-bs-theme="light"] {
+        --bg-main: #f8fafc;
+        --bg-card: #ffffff;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --nav-bg: #ffffff;
+        --border-color: #e2e8f0;
+      }
+
+      /* Dark Mode Palette */
+      [data-bs-theme="dark"] {
+        --bg-main: #120b0b;
+        --bg-card: #1c1313;
+        --text-main: #f1f5f9;
+        --text-muted: #94a3b8;
+        --nav-bg: #180f0f;
+        --border-color: #2a1a1a;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Navbar Style with enhanced vibrant red gradient */
+      .navbar {
+        background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 50%, #ff4d4d 100%) !important;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.25);
+        z-index: 1030;
+      }
+      
+      [data-bs-theme="dark"] .navbar {
+        background: linear-gradient(135deg, #450a0a 0%, #991b1b 50%, #dc2626 100%) !important;
+        box-shadow: 0 4px 15px rgba(153, 27, 27, 0.4);
+      }
+
+      .navbar-brand {
+        color: #ffffff !important;
+      }
+
+      /* Hero Slider */
+      .hero-swiper {
+        width: 100%;
+        height: 85vh;
+        min-height: 500px;
+      }
+      .hero-slide-item {
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ffffff;
+      }
+      .hero-slide-item::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(to bottom, rgba(18, 11, 11, 0.7), rgba(18, 11, 11, 0.85));
+        z-index: 1;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 850px;
+        padding: 0 20px;
+      }
+      .hero-content h1 {
+        font-weight: 800;
+        font-size: 2.6rem;
+        margin-bottom: 20px;
+        letter-spacing: -0.5px;
+      }
+      .hero-content p {
+        font-size: 1.15rem;
+        color: #cbd5e1;
+        margin-bottom: 30px;
+      }
+
+      /* Button Styles with Gradient */
+      .btn-industrial {
+        background: var(--accent-cyan-gradient);
+        border: none;
+        color: #ffffff;
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-weight: 700;
+        transition: transform 0.2s, opacity 0.2s;
+        display: inline-flex;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+      }
+      .btn-industrial:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+        color: #ffffff;
+      }
+
+      /* Swiper Navigation & Pagination */
+      .swiper-button-next, .swiper-button-prev {
+        color: #ff4d4d !important;
+        background: rgba(24, 15, 15, 0.6);
+        padding: 25px;
+        border-radius: 50%;
+        transform: scale(0.6);
+      }
+      .swiper-pagination-bullet {
+        background: #ffffff !important;
+        opacity: 0.5;
+      }
+      .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #ff4d4d !important;
+      }
+
+      /* Sections & Cards */
+      .section-padding {
+        padding: 80px 0;
+      }
+      .card-service {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.02);
+        padding: 40px 30px;
+        height: 100%;
+        transition: transform 0.3s ease, border-color 0.3s;
+      }
+      .card-service:hover {
+        transform: translateY(-5px);
+        border-color: #ff4d4d;
+      }
+      .icon-check {
+        color: #ff4d4d;
+        font-size: 1.5rem;
+        margin-right: 15px;
+      }
+
+      /* Portfolio / Project Cards */
+      .card-project {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        overflow: hidden;
+        height: 100%;
+      }
+      .card-project img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--nav-bg);
+        color: var(--text-muted);
+        border-top: 1px solid var(--border-color);
+        padding: 60px 0 30px 0;
+      }
+      footer h3, footer h5 {
+        color: var(--text-main);
+      }
+      footer ul {
+        padding-left: 0;
+        list-style: none;
+      }
+      footer ul li {
+        margin-bottom: 10px;
+      }
+      footer ul li a {
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      footer ul li a:hover {
+        color: #ff4d4d;
+      }
+
+      /* Floating WhatsApp Button */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: #fff;
+        border-radius: 50px;
+        padding: 10px 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        z-index: 1040;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .whatsapp-float i {
+        font-size: 1.4rem;
+        margin-right: 8px;
+      }
+      .whatsapp-float:hover {
+        background-color: #20ba5a;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+
+    <a href="https://wa.me/628xxxxxxxxxx" target="_blank" class="whatsapp-float">
+      <i class="fab fa-whatsapp"></i> Konsultasi via WhatsApp
+    </a>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center text-white" href="/">
+          <span style="color: #ffffff; font-size: 1.6rem; font-weight: 900; margin-right: 6px;"><img src="logo.png" width="45px"></i></span>
+          <span style="letter-spacing: 0.5px;">Jamil Mart</span>
+        </a>
+        <div class="d-flex align-items-center">
+          
+          <button id="themeToggleBtn" class="btn btn-sm btn-light rounded-circle me-3 p-2 d-flex align-items-center justify-content-center shadow-sm" style="width: 38px; height: 38px;" title="Ganti Tema">
+            <i class="fas fa-sun text-dark" id="themeIcon"></i>
+          </button>
+
+          <button class="navbar-toggler border-0 text-white shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Menu Navigasi</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item"><a class="nav-link active fw-semibold" href="/">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portofolio">Portofolio Singkat</a></li>
+          <li class="nav-item"><a class="nav-link" href="#kontak">Lokasi</a></li>
+        </ul>
+        <div class="mt-4 pt-3 border-top">
+          <a href="https://sahabatsaif.github.io/Website/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcATX8PtleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAaeZoOLa2xuG-8rcStA7JzU6ntjMG_fosLvZ3HMPPd3xLZXURbwiu5SYpFL_zQ_aem_IEUW2Behs655Pup1EFISWQ" class="btn btn-industrial w-100 py-2 justify-content-center">Kontak Kami <i class="fas fa-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper hero-swiper">
+      <div class="swiper-wrapper">
+        
+        <div class="swiper-slide hero-slide-item" style="background-image: url('tampilan.png');">
+          <div class="hero-content">
+            <span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-bold mb-3">Mitra Sembako & Pembayaran Digital</span>
+            <h1 class="display-5">Solusi Belanja Harian & Layanan Keuangan Digital Terpercaya.</h1>
+            <p>Dapatkan kemudahan berbelanja produk kebutuhan pokok harian dengan pelayanan cepat dan harga bersaing langsung di lingkungan Anda.</p>
+            <a href="https://sahabatsaif.github.io/Website/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcATX8PtleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAaeZoOLa2xuG-8rcStA7JzU6ntjMG_fosLvZ3HMPPd3xLZXURbwiu5SYpFL_zQ_aem_IEUW2Behs655Pup1EFISWQ" class="btn-industrial shadow">Konsultasi & Pusat Top-up<i class="fas fa-arrow-right ms-2"></i></a>
+          </div>
+        </div>
+
+        <div class="swiper-slide hero-slide-item" style="background-image: url('detail.png');">
+          <div class="hero-content">
+            <span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-bold mb-3">Kebutuhan Harian & Agen Pembayaran</span>
+            <h1 class="display-5">Melayani Eceran & Grosir untuk Kebutuhan Rumah Tangga Anda.</h1>
+            <p>Hadir dengan suasana toko yang bersih, penataan rak yang rapi, serta pilihan produk berkualitas untuk kepuasan belanja keluarga.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+
+
+    <section id="portofolio" class="section-padding" style="background-color: var(--bg-card);">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill fw-bold mb-2">Tentang Kami</span>
+          <h2 class="fw-bold">Portofolio Singkat</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card card-project shadow-sm">
+              <img src="foto1.png" alt="foto 1">
+              <div class="card-body p-4">
+                <h5 class="fw-bold mb-2">Agen Resmi BRILink dan Mitra SRC.</h5>
+                <p class="text-muted small mb-0">Melayani berbagai transaksi perbankan resmi melalui BRILink serta menyediakan kebutuhan harian terlengkap bersama Mitra SRC.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-project shadow-sm">
+              <img src="foto2.png" alt="foto 2">
+              <div class="card-body p-4">
+                <h5 class="fw-bold mb-2">Belanja Mudah & Nyaman di Jamil Mart</h5>
+                <p class="text-muted small mb-0">Melayani pembayaran tunai, nontunai, serta berbagai keperluan belanja harian dengan ramah dan sigap.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-project shadow-sm">
+              <img src="foto3.png" alt="foto 3">
+              <div class="card-body p-4">
+                <h5 class="fw-bold mb-2">Grosir & Stok Barang Lengkap</h5>
+                <p class="text-muted small mb-0">Menyediakan stok sembako, minuman, dan kebutuhan harian terlengkap untuk konsumsi keluarga maupun stok usaha Anda.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="kontak">
+
+
+
+      <!-- Bagian Peta Maps dengan Jarak Bawah (mb-4) -->
+<div style="width: 100%; max-width: 100%; overflow: hidden; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" class="mb-4">
+    <iframe 
+        src="https://maps.google.com/maps?q=86P4%2B7FP+Jamilmart+%26+BRI+LINK+Pucangro+Gudo+Jombang&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+        width="100%" 
+        height="400" 
+        style="border:0; display:block;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+
+<!-- Bagian Teks Lokasi yang Diubah ke Tengah dan Diberi Jarak Atas (mt-4) -->
+
+<div class="text-center mt-4 mb-5">
+    <h3 class="fw-bold mb-3 text-white">
+        <i class="fas fa-map-marker-alt text-danger me-2"></i> Lokasi
+    </h3>
+    <p class="small text-light mb-4">JamilMart & BRI LINK.</p>
+    
+    <!-- (Kontak) -->
+    <a href="https://sahabatsaif.github.io/Website/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcATX8PtleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAaeZoOLa2xuG-8rcStA7JzU6ntjMG_fosLvZ3HMPPd3xLZXURbwiu5SYpFL_zQ_aem_IEUW2Behs655Pup1EFISWQ" target="_blank" class="btn btn-danger rounded-pill px-4 py-2 fw-bold shadow">
+        Kontak Kami <i class="fas fa-arrow-right ms-2"></i>
+    </a>
+</div>
+
+        <hr class="border-secondary my-4">
+        <div class="text-center text-secondary small">
+          Copyright &copy; 2026 Jamil Mart. Seluruh hak cipta dilindungi.
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      // Inisialisasi Swiper Slider
+      const swiper = new Swiper('.hero-swiper', {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+
+      // Skrip Tombol Ganti Tema (Dark / Light Mode)
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const themeIcon = document.getElementById('themeIcon');
+      const htmlElement = document.documentElement;
+
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-bs-theme');
+        if (currentTheme === 'dark') {
+          htmlElement.setAttribute('data-bs-theme', 'light');
+          themeIcon.classList.remove('fa-sun', 'text-white');
+          themeIcon.classList.add('fa-moon', 'text-dark');
+        } else {
+          htmlElement.setAttribute('data-bs-theme', 'dark');
+          themeIcon.classList.remove('fa-moon', 'text-dark');
+          themeIcon.classList.add('fa-sun', 'text-white');
+        }
+      });
+    </script>
+  </body>
+</html>
